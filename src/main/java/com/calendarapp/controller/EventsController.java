@@ -32,7 +32,7 @@ public class EventsController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Event> findById(@PathVariable("id") String id) {
+	public ResponseEntity<Event> findById(@PathVariable("id") Long id) {
 		Event event = service.findById(id);
 		return ResponseEntity.ok(event);
 	}
@@ -44,13 +44,13 @@ public class EventsController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Event> update(@RequestBody Event event, @PathVariable("id") String id) {
+	public ResponseEntity<Event> update(@RequestBody Event event, @PathVariable("id") Long id) {
 		Event updateEvent = service.update(event, id);
 		return ResponseEntity.ok(updateEvent);
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Boolean> delete(@PathVariable("id") String id) {
+	public ResponseEntity<Boolean> delete(@PathVariable("id") Long id) {
 		service.delete(id);
 		return ResponseEntity.ok(true);
 	}

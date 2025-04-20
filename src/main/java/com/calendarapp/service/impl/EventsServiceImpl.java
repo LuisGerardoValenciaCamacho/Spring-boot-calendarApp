@@ -23,30 +23,34 @@ public class EventsServiceImpl implements IEventsService {
 	}
 
 	@Override
-	public Event findById(String id) {
+	public Event findById(Long id) {
 		Event event = repository.findById(id).orElse(null);
 		return event;
 	}
 
 	@Override
 	public Event create(Event event) {
-		Event newEvent = new Event();
+		Event newEvent = new Event(event.getTitle(), event.getNotes(), event.getStart(), event.getEnd(), event.getBgColor(), event.getUser());
 		newEvent = repository.save(newEvent);
 		return newEvent;
 	}
 
 	@Override
-	public Event update(Event event, String id) {
+	public Event update(Event event, Long id) {
 		Event oldEvent = findById(id);
-		oldEvent.id = event.id;
+		oldEvent.setTitle(event.getTitle());
+		oldEvent.setNotes(event.getNotes());
+		oldEvent.setStart(event.getStart());
+		oldEvent.setEnd(event.getEnd());
+		oldEvent.setBgColor(event.getBgColor());
+		oldEvent.setUser(event.getUser());
 		oldEvent = repository.save(oldEvent);
-		return null;
+		return oldEvent;
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(Long id) {
 		Event deleteEvent = findById(id);
 		repository.delete(deleteEvent);
 	}
-
 }

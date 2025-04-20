@@ -8,11 +8,11 @@ public interface IEventsService {
 	
 	public List<Event> findAll();
 	
-	public Event findById(String id);
+	public Event findById(Long id);
 	
 	public Event create(Event event);
 	
-	public Event update(Event event, String id);
+	public Event update(Event event, Long id);
 	
-	public void delete(String id);
+	public void delete(Long id);
 }
