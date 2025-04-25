@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.calendarapp.exeception.EventNotFoundException;
 import com.calendarapp.model.Event;
 import com.calendarapp.repository.IEventsRepository;
 import com.calendarapp.service.IEventsService;
@@ -24,7 +25,7 @@ public class EventsServiceImpl implements IEventsService {
 
 	@Override
 	public Event findById(Long id) {
-		Event event = repository.findById(id).orElse(null);
+		Event event = repository.findById(id).orElseThrow(() -> new EventNotFoundException("Evento no encontrado"));
 		return event;
 	}
 
