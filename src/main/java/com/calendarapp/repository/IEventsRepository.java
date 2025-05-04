@@ -8,6 +8,6 @@ import com.calendarapp.model.Event;
 
 @EnableMongoRepositories
 @Repository
-public interface IEventsRepository extends MongoRepository<Event, Long> {
+public interface IEventsRepository extends MongoRepository<Event, String> {
 
 }

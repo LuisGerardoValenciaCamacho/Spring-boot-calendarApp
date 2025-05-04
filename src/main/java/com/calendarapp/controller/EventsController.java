@@ -3,6 +3,7 @@ package com.calendarapp.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.calendarapp.service.IEventsService;
 
 @RestController
 @RequestMapping("/api/event")
+@CrossOrigin("http://localhost:5173")
 public class EventsController {
 	
 	private IEventsService service;
@@ -32,7 +34,7 @@ public class EventsController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Event> findById(@PathVariable("id") Long id) {
+	public ResponseEntity<Event> findById(@PathVariable("id") String id) {
 		Event event = service.findById(id);
 		return ResponseEntity.ok(event);
 	}
@@ -44,13 +46,13 @@ public class EventsController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Event> update(@RequestBody Event event, @PathVariable("id") Long id) {
+	public ResponseEntity<Event> update(@RequestBody Event event, @PathVariable("id") String id) {
 		Event updateEvent = service.update(event, id);
 		return ResponseEntity.ok(updateEvent);
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Boolean> delete(@PathVariable("id") Long id) {
+	public ResponseEntity<Boolean> delete(@PathVariable("id") String id) {
 		service.delete(id);
 		return ResponseEntity.ok(true);
 	}

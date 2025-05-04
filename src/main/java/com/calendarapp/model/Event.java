@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Event {
 
 	@Id
-	private Long id;
+	private String id;
 	
 	private String title; 
 	
@@ -37,7 +37,7 @@ public class Event {
 		this.user = user;
 	}
 
-	public Event(Long id, String title, String notes, Date start, Date end, String bgColor, User user) {
+	public Event(String id, String title, String notes, Date start, Date end, String bgColor, User user) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -48,11 +48,11 @@ public class Event {
 		this.user = user;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

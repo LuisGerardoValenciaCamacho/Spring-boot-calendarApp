@@ -24,7 +24,7 @@ public class EventsServiceImpl implements IEventsService {
 	}
 
 	@Override
-	public Event findById(Long id) {
+	public Event findById(String id) {
 		Event event = repository.findById(id).orElseThrow(() -> new EventNotFoundException("Evento no encontrado"));
 		return event;
 	}
@@ -37,7 +37,7 @@ public class EventsServiceImpl implements IEventsService {
 	}
 
 	@Override
-	public Event update(Event event, Long id) {
+	public Event update(Event event, String id) {
 		Event oldEvent = findById(id);
 		oldEvent.setTitle(event.getTitle());
 		oldEvent.setNotes(event.getNotes());
@@ -50,7 +50,7 @@ public class EventsServiceImpl implements IEventsService {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(String id) {
 		Event deleteEvent = findById(id);
 		repository.delete(deleteEvent);
 	}

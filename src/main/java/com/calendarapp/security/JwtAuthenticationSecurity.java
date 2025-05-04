@@ -68,7 +68,7 @@ public class JwtAuthenticationSecurity extends UsernamePasswordAuthenticationFil
 				.and()
 			.signWith(TokenJwtConstants.KEY)
 			.issuedAt(new Date())
-			.expiration(new Date(System.currentTimeMillis() + 600000))
+			.expiration(new Date(System.currentTimeMillis() + 3600000))
 			.compact();
 		response.addHeader("Authorization", String.format(TokenJwtConstants.PREFIX_TOKEN + "%1$s", token));
 		Map<String, Object> body = new HashMap<>();
